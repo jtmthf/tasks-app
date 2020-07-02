@@ -17,5 +17,19 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   plugins: ['@typescript-eslint', 'jest', 'import', 'eslint-comments'],
-  rules: {},
+  rules: {
+    '@typescript-eslint/explicit-function-return-type': 'off',
+  },
+  overrides: [
+    {
+      files: [
+        'packages/*/test/**/*.{ts,tsx}',
+        'packages/*/src/**/*.spec.{ts,tsx}',
+      ],
+      env: {
+        'jest/globals': true,
+      },
+      extends: ['plugin:jest/recommended'],
+    },
+  ],
 };
